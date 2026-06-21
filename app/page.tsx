@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { SignInButton } from "@/components/SignInButton";
 
 const EXAMPLE_REVIEW = `## Summary
@@ -39,7 +40,16 @@ export default async function LandingPage() {
           — with severity-tagged issues, suggestions, and a complexity score — streamed in seconds.
         </p>
 
-        <SignInButton />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <SignInButton />
+          <Link
+            href="/demo"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors shadow-lg shadow-blue-600/20"
+          >
+            Try Demo — No Login Required
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
 
         <p className="text-xs text-slate-400 mt-4">
           Only requests read access to your repositories
